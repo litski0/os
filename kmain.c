@@ -1,4 +1,5 @@
 #include "io.h"
+#include "gdt.h"
 
 #define FB_COMMAND_PORT 0x3D4
 #define FB_DATA_PORT 0x3D5
@@ -177,6 +178,7 @@ int fb_write(char * buf, unsigned int len){
 }  
 
 int kmain(){
+    init_gdt();
     fb_write("This is AryL OS\nHello",21);
     serial_config_all(SERIAL_COM1_BASE,2);
     serial_write("This is AryL OS\nHello",21,SERIAL_COM1_BASE);
