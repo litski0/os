@@ -1,11 +1,19 @@
 global outb             ; make the label outb visible outside this file
 global inb              ;
 outb:
-    mov al, [esp+8]
-    mov dx, [esp+4]
+    push ebp
+    mov ebp, esp
+    mov al, [ebp+12]
+    mov dx, [ebp+8]
     out dx, al
+    mov esp,ebp
+    pop ebp
     ret
 inb:
-    mov dx ,[esp+4]
+    push ebp
+    mov ebp, esp
+    mov dx ,[ebp+8]
     in al,dx
+    mov esp,ebp
+    pop ebp
     ret
