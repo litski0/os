@@ -1,6 +1,7 @@
-typedef unsigned int   uint32_t;
-typedef unsigned short uint16_t;
-typedef unsigned char  uint8_t;
+#ifndef INCLUDE_GDT_H
+
+#define INCLUDE_GDT_H
+
 //Descriptor
 // * Byte:    | 7        | 6          | 5      | 4          |3      2| 1       0|
 // * Content: | baseHigh | granualrity| access | baseMiddle |baseLow | limitLow | 
@@ -51,3 +52,4 @@ extern void load_gdt(unsigned int gdt_ptr_address);
 
 
 
+#endif

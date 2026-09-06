@@ -1,5 +1,5 @@
 global outb             ; make the label outb visible outside this file
-global inb              ;
+global inb              ; 
 outb:
     push ebp
     mov ebp, esp

@@ -1,7 +1,7 @@
-    OBJECTS = loader.o kmain.o io.o gdt.o load_gdt.o
+    OBJECTS = loader.o kmain.o io.o gdt.o gdt_load.o idt.o idt_load.o idt_flush.o interrupt.o pic.o
     CC = gcc
     CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \
-             -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c
+             -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c -masm=intel
     LDFLAGS = -T link.ld -melf_i386
     AS = nasm
     ASFLAGS = -f elf

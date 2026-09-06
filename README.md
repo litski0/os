@@ -2,7 +2,7 @@ Welcome to Development of AryL OS (Hopoefully gets completed by the time i get m
 
 - [x] Chp 4 Making Serial and Frame Buffer Driver
 - [x] Chp 5 Segmentation 
-- [ ] Chp 6 Interrupts and Input
+- [X] Chp 6 Interrupts and Input
 - [ ] Chp 7 Road to User Mode
 - [ ] Chp 8 A short introduction t Virtual Memory
 - [ ] Chp 9 Paging
