@@ -1,7 +1,11 @@
 #include "idt.h"
 #include "io.h"
+#include "framebuffer.h"
+
 extern uint32_t interrupt_handler_array[];
 
+
+// TODO: Add macro isntead of hardcoded numbers
 struct idt_entry idt_entries[256];
 struct idt_ptr ip;
 
@@ -23,15 +27,18 @@ void init_idt(){
 }
 
 
-
+// TODO: Need to add all various handler 
 void interrupt_handler(struct cpu_state cpu ,uint32_t interrupt ,struct stack_state stack){
     (void)cpu;
     (void)stack;
 
 
+// TODO: Remove the hotfix, add macros for interrupt  and remove numbers
     if(interrupt==33){
-        inb(0x60);
+        char s= inb(0x60);
         outb(0x20,0x20);
+        char *s1=&s;
+        fb_write(s1,1);
     }
  
 
