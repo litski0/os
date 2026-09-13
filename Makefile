@@ -11,11 +11,11 @@ OBJECTS = $(BUILD_DIR)/loader.o \
           $(BUILD_DIR)/gdt_load.o \
           $(BUILD_DIR)/idt.o \
           $(BUILD_DIR)/idt_load.o \
-          $(BUILD_DIR)/idt_flush.o \
           $(BUILD_DIR)/interrupt.o \
           $(BUILD_DIR)/pic.o \
           $(BUILD_DIR)/framebuffer.o \
-          $(BUILD_DIR)/serial.o
+          $(BUILD_DIR)/serial.o \
+		  $(BUILD_DIR)/string.o
 
 CC = gcc
 CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \
@@ -51,6 +51,10 @@ $(BUILD_DIR)/%.o: kernel/%.c
 	$(CC) $(CFLAGS) $< -o $@
 
 $(BUILD_DIR)/%.o: drivers/%.c
+	@mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) $< -o $@
+
+$(BUILD_DIR)/%.o: libc/%.c
 	@mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) $< -o $@
 

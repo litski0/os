@@ -1,8 +1,21 @@
 #include "typedef.h"
+#include "pic.h"
 
-#ifndef INCLUDE_IDT_H
+#ifndef IDT_INCLUDE_H
 
-#define INCLUDE_IDT_H
+#define IDT_INCLUDE_H
+
+#define IDT_MAX_INTERRUPTS 256
+
+#define IDT_ATTR_INTERRUPT 0x8E
+#define IDT_ATTR_TRAP 0x8F
+
+#define IDT_EOI 0x20 
+
+#define IDT_INT_KEYBOARD (PIC_MASTER_OFFSET + PIC_IRQ_KEYBOARD)
+#define IDT_MAX_CHAR_KEYBOARD 128
+#define IDT_KEYBOARD_UP_MASK 0x80
+
 
 // "High"
 // Bit:     | 31              16 | 15 | 14 13 | 12 | 11 | 10 9 8 | 7 6 5 | 4 3 2 1 0 |
@@ -56,6 +69,6 @@ struct stack_state{
 
 extern void load_idt(uint32_t idt_ptr_address);
 void init_idt();
-void interrupt_handler(struct cpu_state cpu,uint32_t interrupt ,struct stack_state stack );
+void interrupt_handler(struct cpu_state cpu,uint32_t  interrupt ,struct stack_state stack );
 
 #endif

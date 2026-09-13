@@ -1,6 +1,8 @@
-#ifndef INCLUDE_SERIAL_H
+#include "typedef.h"
 
-#define INCLUDE_SERIAL_H
+#ifndef SERIAL_INCLUDE_H
+
+#define SERIAL_INCLUDE_H
 
 #define SERIAL_COM1_BASE 0x3f8
 #define SERIAL_DATA_PORT(base) (base)
@@ -14,16 +16,16 @@
 
 #define SERIAL_MAX_READ_BUFF 512
 
-void serial_configure_baud_rate(unsigned int com, unsigned short divisor);
-void serial_configure_line(unsigned int com);
-void serial_configure_buffer(unsigned int com);
-void serial_configure_modem(unsigned int com);
-int serial_is_empty(unsigned int com);
-int serial_have_data(unsigned int com);
-int serial_read(unsigned int com, char*s);
-int serial_is_faulty(unsigned int com);
-void serial_config_all(unsigned int com, unsigned short divisor);
-int serial_write(char* s, int len,unsigned int com);
+void serial_configure_baud_rate(uint32_t   com, uint16_t divisor);
+void serial_configure_line(uint32_t com);
+void serial_configure_buffer(uint32_t com);
+void serial_configure_modem(uint32_t com);
+int serial_is_empty(uint32_t com);
+int serial_have_data(uint32_t com);
+int serial_read(uint32_t com, char*s);
+int serial_is_faulty(uint32_t com);
+void serial_config_all(uint32_t com, uint16_t divisor);
+int serial_write(uint8_t* s,uint32_t com);
 
 
 

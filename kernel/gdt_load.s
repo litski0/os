@@ -1,3 +1,5 @@
+;TODO: ADD macro to 
+
 global load_gdt
 
 load_gdt:

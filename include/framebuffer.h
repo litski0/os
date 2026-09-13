@@ -1,6 +1,9 @@
-#ifndef INCLUDE_FRAMEBUFFER_H
+#include "typedef.h"
+#ifndef FRAMEBUFFER_INCLUDE_H
 
-#define INCLUDE_FRAMEBUFFER_H
+#define FRAMEBUFFER_INCLUDE_H
+
+#define FB_STARTING_ADDR 0x000B8000
 
 #define FB_COMMAND_PORT 0x3D4
 #define FB_DATA_PORT 0x3D5
@@ -22,8 +25,8 @@
 #define FB_TAB 4
 
 
-void fb_write_cell(unsigned int i,char c, unsigned char fg, unsigned char bg);
-void fb_move_cursor(unsigned short pos);
-int fb_write(char * buf, unsigned int len);
+void fb_write_cell(uint32_t i,uint8_t c, uint8_t fg, uint8_t bg);
+void fb_move_cursor(uint16_t pos);
+int fb_write(uint8_t * buf);
 
 #endif

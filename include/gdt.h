@@ -1,6 +1,10 @@
-#ifndef INCLUDE_GDT_H
+#include "typedef.h"
 
-#define INCLUDE_GDT_H
+#ifndef GDT_INCLUDE_H
+
+#define GDT_INCLUDE_H
+
+#define GDT_KERNEL_CODE_SEG 0x8
 
 //Descriptor
 // * Byte:    | 7        | 6          | 5      | 4          |3      2| 1       0|
@@ -29,12 +33,12 @@
 // AC: Srt by CPU when it access 
 
 void init_gdt();
-void gdt_set_gate(int num ,unsigned int base, unsigned int limit, char access, char gran);
+void gdt_set_gate(int num ,uint32_t base, uint32_t  limit, char access, char gran);
 
 
 struct gdt_entry{
-    unsigned short limit_low;
-    unsigned short base_low;
+    uint16_t limit_low;
+    uint16_t base_low;
     char base_middle;
     char access;
     char granualrity;
@@ -43,12 +47,12 @@ struct gdt_entry{
 
 
 struct gdt_ptr{
-    unsigned short limit;
-    unsigned int base;
+    uint16_t limit;
+    uint32_t  base;
 
 } __attribute__((packed));
 
-extern void load_gdt(unsigned int gdt_ptr_address);
+extern void load_gdt(uint32_t  gdt_ptr_address);
 
 
 
